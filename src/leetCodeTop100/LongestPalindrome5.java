@@ -1,4 +1,4 @@
-package stringdemo;
+package leetCodeTop100;
 
 import com.sun.tools.javac.util.StringUtils;
 
