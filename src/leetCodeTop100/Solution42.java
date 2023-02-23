@@ -10,7 +10,7 @@ package leetCodeTop100;
 public class Solution42 {
     public static void main(String[] args) {
         int height[] = {0,1,0,2,1,0,1,3,2,1,2,1};
-        int sum = trapSolutiongFirst(height);
+        int sum = trapSolutionFirst(height);
         System.out.println("接雨水的总数" + sum);
 
     }
@@ -22,7 +22,7 @@ public class Solution42 {
      * @param height
      * @return
      */
-    public static int trapSolutiongFirst(int[] height) {
+    public static int trapSolutionFirst(int[] height) {
         int sum = 0;
         for (int i = 1; i < height.length - 1; i++) {
             //找出当前列（i）最左边的高度
@@ -42,6 +42,32 @@ public class Solution42 {
             //找出两端较小的
             int min = Math.min(max_left, max_right);
             //只有较小的一段大于当前列的高度才会有水，其他情况不会有水,而且水的高度就是最小值减去当前列
+            if (min > height[i]) {
+                sum = sum + (min - height[i]);
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * 解法二：动态规划,对解法一进行优化
+     * 时间复杂度O（n）,空间复杂度O（n），用来保存每一列左边最高的墙和右边最高的墙
+     * @param height
+     * @return
+     */
+    public static int trapSolutionSecond(int[] height) {
+        int sum = 0;
+        int[] max_left = new int[height.length];
+        int[] max_right = new int[height.length];
+
+        for (int i = 1; i < height.length - 1; i++) {
+            max_left[i] = Math.max(max_left[i - 1], height[i - 1]);
+        }
+        for (int i = height.length - 2; i >=0; i++) {
+            max_right[i] = Math.max(max_right[i + 1], height[i + 1]);
+        }
+        for (int i = 1; i < height.length - 1; i++) {
+            int min = Math.min(max_left[i], max_right[i]);
             if (min > height[i]) {
                 sum = sum + (min - height[i]);
             }

@@ -3,7 +3,7 @@ package stringdemo;
 import com.sun.tools.javac.util.StringUtils;
 
 /**
- * 最长回文子串
+ * 5.最长回文子串
  * 给你一个字符串 s，找到 s 中最长的回文子串。
  * <p>
  * 如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。
@@ -11,7 +11,7 @@ import com.sun.tools.javac.util.StringUtils;
  * @author xmy
  * @date 2023/2/23 7:32 下午
  */
-public class LongestPalindrome {
+public class LongestPalindrome5 {
 
     private static final int MIN_NUMBER_CONST = 1;
 
