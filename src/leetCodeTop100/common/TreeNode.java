@@ -7,9 +7,9 @@ package leetCodeTop100.common;
  * @date 2023/2/25 10:28 上午
  */
 public class TreeNode {
-    int  val;
-    TreeNode left;
-    TreeNode right;
+    public int  val;
+    public TreeNode left;
+    public TreeNode right;
     public TreeNode() {}
     public TreeNode(int val) {
         this.val = val;
