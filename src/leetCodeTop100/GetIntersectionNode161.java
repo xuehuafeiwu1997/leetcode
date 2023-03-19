@@ -31,4 +31,20 @@ public class GetIntersectionNode161 {
         return null;
 
     }
+
+
+    public ListNode getIntersectionNode_1(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+        //解法二：使用双指针来处理
+        ListNode pA = headA;
+        ListNode pB = headB;
+        while (pA != pB) {
+            pA = pA == null ? headB : pA.next;
+            pB = pB == null ? headA : pB.next;
+        }
+        return pA;
+
+    }
 }
