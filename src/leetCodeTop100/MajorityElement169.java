@@ -36,4 +36,25 @@ public class MajorityElement169 {
         }
         return -1; //代表未找到
     }
+
+    //使用摩尔投票法解决
+    public static int majorityElement_1(int[] nums) {
+        //投票对象
+        int candidate = nums[0];
+        //票数
+        int count = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == candidate) { //投票对象相同，票数+1
+                count++;
+            } else { //投票对象不同，票数-1
+                count--;
+                if (count < 0) { //该元素不是多数元素，更新投票对象
+                    candidate = nums[i];
+                    count = 1;
+                }
+            }
+        }
+        return candidate;
+    }
 }
