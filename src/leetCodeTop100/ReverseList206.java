@@ -17,7 +17,7 @@ public class ReverseList206 {
         l1.next.next.next = new ListNode(4);
         l1.next.next.next.next = new ListNode(5);
 
-        ListNode listNode = reverseList(l1);
+        ListNode listNode = reverseList_1(l1);
         System.out.println(listNode);
 
     }
@@ -42,5 +42,18 @@ public class ReverseList206 {
         //这一行必须要加，不然的话死循环，因为你在使用栈的时候进行组装，还把原先的指针组装了进去
         temp.next = null;
         return start.next;
+    }
+
+    public static ListNode reverseList_1(ListNode head) {
+        ListNode cur = head;
+        ListNode prev = null;
+        ListNode temp = null;
+        while (cur != null) {
+            temp = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = temp;
+        }
+        return prev;
     }
 }
