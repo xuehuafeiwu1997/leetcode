@@ -14,6 +14,8 @@ import java.util.List;
 public class IsPalindrome234 {
 
     public boolean isPalindrome(ListNode head) {
+        //参考：另一种解法：炫技一样 https://leetcode.cn/problems/palindrome-linked-list/solution/kuai-man-zhi-zhen-fan-zhuan-lian-biao-on-pf80/
+
         //转换为数组的思想
         List<Integer> arr = new ArrayList<>();
         ListNode currentNode = head;
