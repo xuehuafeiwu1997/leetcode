@@ -12,7 +12,15 @@ import java.util.List;
  * @date 2023/3/19 8:08 下午
  */
 public class FindDisappearedNumbers448 {
+    public static void main(String[] args) {
+        int[] nums = {4,3,2,7,8,2,3,1};
+        List<Integer> disappearedNumbers_2 = findDisappearedNumbers_2(nums);
+        disappearedNumbers_2.stream()
+                .forEach(num -> System.out.println(num));
+    }
 
+
+    //方法1
     public List<Integer> findDisappearedNumbers(int[] nums) {
         //1. 使用额外空间，哈希set的解决办法
         HashSet numSet = new HashSet();
@@ -29,4 +37,33 @@ public class FindDisappearedNumbers448 {
         }
         return resultList;
     }
+
+    //方法二: 方法可行，但是超出时间限制
+    public List<Integer> findDisappearedNumbers_1(int[] nums) {
+        List<Integer> resultList = new ArrayList<>();
+        for (int i = 1; i <= nums.length; i++) {
+            resultList.add(i);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            resultList.remove((Integer) nums[i]);
+        }
+        return resultList;
+    }
+    //方法三：数组下标替换，不需要引入额外的空间
+    public static List<Integer> findDisappearedNumbers_2(int[] nums) {
+       List<Integer> resultList = new ArrayList<>();
+       for (int i = 0; i < nums.length; i++) {
+           if (nums[Math.abs(nums[i]) - 1] > 0) {
+               nums[Math.abs(nums[i]) - 1] = -nums[Math.abs(nums[i]) - 1];
+           }
+       }
+       for (int i = 0; i< nums.length; i++) {
+           if (nums[i] > 0) {
+               resultList.add(i + 1);
+           }
+       }
+       return resultList;
+    }
+
 }
