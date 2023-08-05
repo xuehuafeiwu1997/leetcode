@@ -9,6 +9,8 @@ import leetCodeTop100.common.TreeNode;
  * 对称二叉树
  * 非递归解法
  *
+ * 队列：offer入队，入队成功返回true，入队失败返回false
+ *
  * @author xmy
  * @date 2023/2/25 5:23 下午
  */
